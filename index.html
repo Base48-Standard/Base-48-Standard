@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base-48 Standard Converter</title>
+    <link rel="icon" type="image/png" href="resources/Icon.png">
     <style>
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #0f0f0f; color: #eee; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
         .container { background: #1a1a1a; padding: 2.5rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); text-align: center; max-width: 450px; width: 100%; border: 1px solid #333; }
@@ -19,9 +20,7 @@
         .result-box { background: #252525; padding: 20px; border-radius: 8px; margin-top: 10px; position: relative; border: 1px dashed #444; margin-bottom: 20px; }
         .result-label { font-size: 0.7rem; text-transform: uppercase; color: #888; letter-spacing: 1px; margin-bottom: 10px; }
         
-        /* Zde je oprava pro zalamování textu */
         #output, #hexOutput { word-break: break-all; overflow-wrap: break-word; font-family: 'Courier New', monospace; font-weight: bold; }
-        
         #output { font-size: 2.2rem; color: #00ffcc; margin-bottom: 15px; display: block; }
         
         button { width: 100%; padding: 12px; background: #00ffcc; border: none; border-radius: 8px; cursor: pointer; color: #0b0b0b; font-weight: bold; font-size: 1rem; transition: transform 0.1s, background 0.3s; }
@@ -62,10 +61,12 @@
     &copy; 2025 Base-48 Standard Organization • Open Source
 </div>
 
-<script>
-    const ALPHABET = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqr";
+<script type="module">
+    // Importujeme logiku z tvého nového souboru
+    import { encode } from './base48.js';
 
-    function convert() {
+    // Přidání funkcí do globálního window, aby fungovalo oninput/onclick v HTML
+    window.convert = function() {
         let val = document.getElementById('inputNum').value;
         let output = document.getElementById('output');
         let hexOutput = document.getElementById('hexOutput');
@@ -76,29 +77,21 @@
             return;
         }
 
-        // JS umí pracovat s velkými čísly pomocí BigInt, aby se předešlo chybám u obřích adres
         try {
-            let num = BigInt(val.split('.')[0]); 
-            
-            // Base-48 Conversion
-            let result = "";
-            let tempNum = num;
-            if (tempNum === 0n) result = ALPHABET[0];
-            while (tempNum > 0n) {
-                result = ALPHABET[Number(tempNum % 48n)] + result;
-                tempNum = tempNum / 48n;
-            }
+            // Použijeme tvou importovanou funkci encode
+            const result = encode(val);
             output.innerText = result || "0";
 
-            // Hex Comparison
+            // Hexadecimální srovnání přes BigInt
+            let num = BigInt(val.split('.')[0]);
             hexOutput.innerText = "0x" + num.toString(16).toUpperCase();
         } catch (e) {
             output.innerText = "Error";
-            hexOutput.innerText = "Value too large";
+            hexOutput.innerText = "Invalid Input";
         }
     }
 
-    function copyToClipboard() {
+    window.copyToClipboard = function() {
         const text = document.getElementById('output').innerText;
         navigator.clipboard.writeText(text).then(() => {
             const btn = document.querySelector('button');
