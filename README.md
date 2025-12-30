@@ -25,6 +25,9 @@ Our standard uses 48 carefully selected characters:
 | Hexadecimal | `F4240` | 5 chars |
 | **Base-48** | **`8L9k`** | **4 chars** |
 
+## 🌐 Live Demo
+Try the **Base-48 Standard Converter** online:  
+[**https://base48-standard.github.io/Base-48-Standard/**](https://base48-standard.github.io/Base-48-Standard/)
 ## 🛠️ Quick Start (JavaScript)
 
 ```javascript
