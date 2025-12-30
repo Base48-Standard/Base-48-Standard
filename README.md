@@ -39,7 +39,7 @@ npm install base48-standard
 ## 🛠️ Quick Start (JavaScript)
 
 ```javascript
-import { encode, decode } from 'base48';
+import { encode, decode } from 'base48-standard';
 
 const myAddr = encode(415232); 
 console.log(`B48 Address: ${myAddr}`); // Output: 3mP8
