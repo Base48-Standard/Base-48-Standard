@@ -1,3 +1,5 @@
+
+![Base-48 Standard Banner](banner.png)
 # Base-48 Standard (B48) 🚀
 
 Base-48 is a high-density, human-friendly numeral system. It was created to bridge the gap between **Base-16 (Hex)** and **Base-64**, offering better memory address compression while maintaining perfect readability.
