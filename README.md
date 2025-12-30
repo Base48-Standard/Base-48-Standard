@@ -1,26 +1,32 @@
-# Base-48 Standard (B48)
+# Base-48 Standard (B48) 🚀
 
-**Base-48** je moderní systém kódování adres a dat navržený pro maximální lidskou čitelnost a efektivitu. Nahrazuje zastaralý Hexadecimální systém (Base-16) kratším zápisem a eliminuje chyby vznikající záměnou podobných znaků.
+Base-48 is a high-density, human-friendly numeral system. It was created to bridge the gap between **Base-16 (Hex)** and **Base-64**, offering better memory address compression while maintaining perfect readability.
 
-## ✨ Proč Base-48?
+## 💡 Why Base-48?
 
-* **Kratší adresy:** Oproti Hexadecimální soustavě zkracuje délku adres o cca 25-30 %.
-* **Zero-Confusion Alphabet:** Speciálně vybraná abeceda, která neobsahuje vizuálně zaměnitelné znaky (např. žádné `I`, `O`, `l`).
-* **Univerzální:** Vhodné pro paměťové adresy, identifikátory v databázích nebo kryptografické otisky.
+Standard Hexadecimal (Base-16) is great for machines but long for humans. Base-64 is compact but contains confusing characters (like `O`, `0`, `I`, `l`). 
 
-## 🔠 Oficiální Abeceda
-Náš standard používá těchto 48 unikátních znaků:
+**Base-48 solves this by:**
+1. **Removing Confusion:** No look-alike characters.
+2. **Efficiency:** Addresses are ~28% shorter than Hex.
+3. **URL Safe:** Uses only alphanumeric characters.
+
+## 🔠 The Official Alphabet
+Our standard uses 48 carefully selected characters:
 `0123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjklmnpqr`
 
-## 📊 Porovnání
-| Systém | Číslo (Příklad) | Zápis (Adresa) |
-| :--- | :--- | :--- |
-| Decimal | 1,000,000 | `1000000` |
-| Hex (Base-16) | 1,000,000 | `F4240` |
-| **Base-48** | 1,000,000 | **`8L9k`** |
+## 📊 Comparison Table
 
-## 🚀 Instalace a použití (JavaScript)
+| Format | Example Address | Length |
+| :--- | :--- | :--- |
+| Decimal | `1,000,000` | 7 chars |
+| Hexadecimal | `F4240` | 5 chars |
+| **Base-48** | **`8L9k`** | **4 chars** |
+
+## 🛠️ Quick Start (JavaScript)
+
 ```javascript
-// Příklad převodu čísla na Base-48 adresu
-const B48 = require('./base48');
-console.log(B48.encode(415232)); // Výstup: "3mP8"
+import { encode, decode } from 'base48';
+
+const myAddr = encode(415232); 
+console.log(`B48 Address: ${myAddr}`); // Output: 3mP8
