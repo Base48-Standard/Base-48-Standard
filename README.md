@@ -1,6 +1,9 @@
 
 ![Base-48 Standard Banner](resources/banner.png)
 # Base-48 Standard (B48) 🚀
+[![npm version](https://img.shields.io/npm/v/base48-standard.svg?style=flat-square)](https://www.npmjs.com/package/base48-standard)
+[![npm downloads](https://img.shields.io/npm/dm/base48-standard.svg?style=flat-square)](https://www.npmjs.com/package/base48-standard)
+[![license](https://img.shields.io/npm/l/base48-standard.svg?style=flat-square)](https://github.com/Base48-Standard/Base-48-Standard/blob/main/LICENSE)
 
 Base-48 is a high-density, human-friendly numeral system. It was created to bridge the gap between **Base-16 (Hex)** and **Base-64**, offering better memory address compression while maintaining perfect readability.
 
